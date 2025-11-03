@@ -39,7 +39,7 @@ cost：每偵的能量消耗
 
 photosynthesis_rate：葉綠素！
 ### 特殊元素物件
-CellNucleus：細胞核，玩家不可以不攜帶此元素，請玩家將他放置在最前面
+CellNucleus：細胞核，玩家必須攜帶此元素，請玩家將他放置在最前面
 
 
   
