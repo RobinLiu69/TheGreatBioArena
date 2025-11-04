@@ -10,7 +10,7 @@ class BioEntity:
     def __init__(self, name, module: base_creature.BaseCreature, width, height, energy_ratio=1.0):
         self.name = name
         self.module = module
-        self.note = {}
+        self.note = {"time": 0.0}
         self.parts = module.init_parts()
         self.len_of_parts = len(self.parts)
         self.year_old = 0
@@ -43,6 +43,8 @@ class BioEntity:
         if not self.alive:
             return []
 
+        self.note["time"] += dt
+        
         direction, speed_ratio = self.module.move_logic(self.energy_ratio, self.note)
         if direction is not None:
             self.move(direction, speed_ratio, dt)
@@ -163,3 +165,4 @@ class BioEntity:
             children.append(child)
 
         return children
+
