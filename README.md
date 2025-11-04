@@ -38,8 +38,20 @@ speed：移動的速度基礎值，移動會消耗額外能量
 cost：每偵的能量消耗
 
 photosynthesis_rate：葉綠素！
-### 特殊元素物件
-CellNucleus：細胞核，玩家必須攜帶此元素，請玩家將他放置在最前面
+### 元素物件
+Lorica(殼)：一個防禦物件
+
+Spiculum(針)：一攻擊物件
+
+Folium(葉綠體)：光合作用的單位
+
+NucleusCellulae(細胞核)：玩家必須攜帶此元素，請玩家將他放置在最前面
+
+Cytoplasma(細胞質)：一個中庸的物件
+
+CytoplasmaMobilis(超快細胞質)：能提供大量速度
+
+CytoplasmaMagnum(超胖細胞質)：很胖
 ## 世界限制
 ### 葉綠素限制
 葉綠素所能發揮的生產力會隨著生物總和能量的升高而逐漸降低。
