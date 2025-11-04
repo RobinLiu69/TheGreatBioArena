@@ -10,7 +10,7 @@ class BioEntity:
     def __init__(self, name, module: base_creature.BaseCreature, width, height, energy_ratio=1.0):
         self.name = name
         self.module = module
-        self.note = []
+        self.note = {}
         self.parts = module.init_parts()
         self.len_of_parts = len(self.parts)
         self.year_old = 0
@@ -86,7 +86,7 @@ class BioEntity:
 
     def move(self, direction: int, speed_ratio: float, dt: float):
         rad = math.radians(direction%360)
-        if not 0 < speed_ratio < 1:
+        if not 0 < speed_ratio <= 1:
             return
 
         self.vx = math.cos(rad) * self.speed * speed_ratio
@@ -161,4 +161,5 @@ class BioEntity:
             child.x = self.x + random.randint(-int(self.size*1), int(self.size*1))
             child.y = self.y + random.randint(-int(self.size*1), int(self.size*1))
             children.append(child)
+
         return children
