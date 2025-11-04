@@ -42,15 +42,18 @@ class World:
         self.entities.extend(new_entities)
 
         creature_names = set([entity.name for entity in self.entities if entity.alive])
+        world_total_energy = sum(entity.energy for entity in self.entities)
         for name in creature_names:
-            name_energy[name] = sum([entity.energy for entity in self.entities if entity.name == name])
-            if name_energy[name]/sum(entity.energy for entity in self.entities) > 0.95:
+            name_energy[name] = round(sum([entity.energy for entity in self.entities if entity.name == name]))
+            if name_energy[name]/world_total_energy > 0.95:
                 self.win = True
-                print(name)
-        # print(name_energy)
+                print("\n", name)
+        if not self.win:
+            print("\r", name_energy, end="                                    ")
 
     def draw(self):
         self.screen.fill((50, 100, 255))
         for entity in self.entities:
             pygame.draw.circle(self.screen, entity.color, (int(entity.x), int(entity.y)), int(entity.size))
+
 
