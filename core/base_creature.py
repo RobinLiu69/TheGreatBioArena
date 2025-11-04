@@ -12,9 +12,10 @@ class BaseCreature(ABC):
         pass
 
     @abstractmethod
-    def move_logic(self,  energy_ratio: float, note: list) -> tuple[int, float]:
+    def move_logic(self,  energy_ratio: float, note: dict) -> tuple[int, float]:
         pass
 
     @abstractmethod
-    def reproduce_logic(self, energy_ratio: float, note: list) -> Sequence[int]:
+    def reproduce_logic(self, energy_ratio: float, note: dict) -> Sequence[int]:
         pass
+
