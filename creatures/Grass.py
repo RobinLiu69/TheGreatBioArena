@@ -10,7 +10,7 @@ class Grass(BaseCreature):
         return (120, 255, 120)
 
     def move_logic(self, energy_ratio, note) -> tuple[int, int]:
-        if len(note) == 0:
+        if len(note) == 1:
             note["方向"] = random.randint(0, 360)
             note["速度"] = 1
         note["速度"] -= 0.02
