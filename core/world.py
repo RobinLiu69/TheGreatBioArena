@@ -6,6 +6,7 @@ class World:
     def __init__(self, screen: pygame.surface.Surface):
         self.entities: list[BioEntity] = []
         self.screen = screen
+        self.win = False
         self.width, self.height = screen.get_size()
         self.load_creatures()
 
@@ -32,16 +33,24 @@ class World:
     
     def update(self, dt: float):
         new_entities = []
+        name_energy = {}
         for entity in self.entities:
             spawn = entity.update(dt, self.entities)
             new_entities.extend(spawn)
         self.entities = [entity for entity in self.entities if entity.alive]
 
-        # print(sum([entity.energy for entity in self.entities if entity.alive]))
-        
         self.entities.extend(new_entities)
+
+        creature_names = set([entity.name for entity in self.entities if entity.alive])
+        for name in creature_names:
+            name_energy[name] = sum([entity.energy for entity in self.entities if entity.name == name])
+            if name_energy[name]/sum(entity.energy for entity in self.entities) > 0.95:
+                self.win = True
+                print(name)
+        # print(name_energy)
 
     def draw(self):
         self.screen.fill((50, 100, 255))
         for entity in self.entities:
             pygame.draw.circle(self.screen, entity.color, (int(entity.x), int(entity.y)), int(entity.size))
+
