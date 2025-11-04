@@ -82,7 +82,7 @@ class BioEntity:
             self.alive = False
             return self.reproduce(ratios)
         
-        self.handle_collisions(entities)
+        self.handle_collisions(dt, entities)
 
         return []
 
@@ -116,7 +116,7 @@ class BioEntity:
     def gain_energy(self, gain: float) -> None:
         self.energy += gain * random.randint(90, 100)/100
 
-    def handle_collisions(self, entities: list["BioEntity"]) -> None:
+    def handle_collisions(self, dt: float, entities: list["BioEntity"]) -> None:
         for other in entities:
             if not self.alive:
                 break
@@ -145,10 +145,10 @@ class BioEntity:
                     
                 angle = math.atan2(dy, dx)
                 push = (self.size + other.size - dist) / 2
-                self.x += math.cos(angle) * push
-                self.y += math.sin(angle) * push
-                other.x -= math.cos(angle) * push
-                other.y -= math.sin(angle) * push
+                self.x += math.cos(angle) * push * dt
+                self.y += math.sin(angle) * push * dt
+                other.x -= math.cos(angle) * push * dt
+                other.y -= math.sin(angle) * push *dt
 
 
     def reproduce(self, ratios) -> list["BioEntity"]:
@@ -165,4 +165,5 @@ class BioEntity:
             children.append(child)
 
         return children
+
 
