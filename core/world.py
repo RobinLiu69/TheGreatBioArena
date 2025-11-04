@@ -24,7 +24,7 @@ class World:
                             entity = BioEntity(attr, creature, self.width, self.height)
                             self.entities.append(entity)
     
-    def update(self, dt):
+    def update(self, dt: float):
         new_entities = []
         for entity in self.entities:
             spawn = entity.update(dt, self.entities)

@@ -9,10 +9,10 @@ class ExampleCreature(BaseCreature):
     def get_color(self) -> tuple[int, int, int]:
         return (148, 148, 73)
 
-    def move_logic(self, note) -> tuple[int, int]:
+    def move_logic(self, energy_ratio, note) -> tuple[int, int]:
         return 0, 0
 
     def reproduce_logic(self, energy_ratio, note) -> list[int]:
-        if energy_ratio > 5:
-            return [1, 1]
+        if energy_ratio > 4.3:
+            return [3, 1]
         return []

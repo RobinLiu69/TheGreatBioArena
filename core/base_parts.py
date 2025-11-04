@@ -47,3 +47,7 @@ class Cytoplasm(BasePart):
 class MobileCytoplasm(BasePart):
     def __init__(self):
         super().__init__(energy=1, volume=0.5, speed=5, cost=0.02)
+
+class MastCytoplasm(BasePart):
+        def __init__(self):
+            super().__init__(energy=2, volume=3, defense=2, speed=1, cost=0.02)

@@ -4,15 +4,19 @@ from core.base_parts import *
 
 class ExampleCreature(BaseCreature):    
     def init_parts(self) -> list[BasePart]:
-        return [CellNucleus()] + [Leaf() for _ in range(8)]  + [Armor() for _ in range(8)]
+        return [CellNucleus()] + [Leaf() for _ in range(5)] + [MobileCytoplasm()]
 
     def get_color(self) -> tuple[int, int, int]:
         return (120, 255, 120)
 
     def move_logic(self, energy_ratio, note) -> tuple[int, int]:
-        return 0, 0
+        if len(note) == 0:
+            note.append(random.randint(0, 360))
+            note.append(1)
+        note[1] -= 0.02
+        return note[0], note[1]
 
     def reproduce_logic(self, energy_ratio, note) -> list[int]:
-        if energy_ratio > 2:
-            return [1, 1]
+        if energy_ratio > 1:
+            return [1, 1, 1, 1]
         return []
