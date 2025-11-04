@@ -10,7 +10,7 @@ clock = pygame.time.Clock()
 def main():
     run = True
     while run:
-        dt = clock.tick(20) / 100.0
+        dt = clock.tick(20) / 1000.0
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -23,4 +23,5 @@ def main():
                 
 
 if __name__ == "__main__":
+
     main()
