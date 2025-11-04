@@ -4,7 +4,7 @@ from core.base_parts import *
 
 class LuckerCreature(BaseCreature):    
     def init_parts(self) -> list[BasePart]:
-        return [CellNucleus()] + [Leaf() for _ in range(6)] + [Spike() for _ in range(7)] + [Armor() for _ in range(7)] + [Cytoplasm()]
+        return [NucleusCellulae()] + [Folium() for _ in range(6)] + [Spiculum() for _ in range(7)] + [Lorica() for _ in range(7)] + [Cytoplasma()]
  
     def get_color(self) -> tuple[int, int, int]:
         return (225, 255, 0)

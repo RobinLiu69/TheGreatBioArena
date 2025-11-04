@@ -2,9 +2,9 @@ import random
 from core.base_creature import BaseCreature
 from core.base_parts import *
 
-class ExampleCreature(BaseCreature):
+class Knight(BaseCreature):
     def init_parts(self) -> list[BasePart]:
-        return [CellNucleus(),Armor(), Armor(), Spike(), Spike(), Spike(), Spike(), Leaf(),Leaf(),Leaf(),Leaf(),Leaf(),Leaf(),Leaf(),Leaf(), Cytoplasm()]
+        return [NucleusCellulae()] + [Lorica() for _ in range(2)] + [Spiculum() for _ in range(4)] + [Folium() for _ in range(8)] + [Cytoplasma()]
 
     def get_color(self) -> tuple[int, int, int]:
         return (148, 148, 73)

@@ -3,7 +3,6 @@ from typing import Sequence
 from core.base_parts import BasePart
 
 class BaseCreature(ABC):
-
     @abstractmethod
     def init_parts(self) -> Sequence[BasePart]:
         pass

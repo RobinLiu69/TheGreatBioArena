@@ -2,9 +2,9 @@ import random
 from core.base_creature import BaseCreature
 from core.base_parts import *
 
-class ExampleCreature(BaseCreature):    
+class Grass(BaseCreature):    
     def init_parts(self) -> list[BasePart]:
-        return [CellNucleus()] + [Leaf() for _ in range(5)] + [MobileCytoplasm()]
+        return [NucleusCellulae()] + [Folium() for _ in range(5)] + [CytoplasmaMobilis()]
 
     def get_color(self) -> tuple[int, int, int]:
         return (120, 255, 120)

@@ -19,35 +19,35 @@ class BasePart:
         pass
 
 
-class Armor(BasePart):
+class Lorica(BasePart):
     def __init__(self):
         super().__init__(energy=3, volume=1, defense=7, cost=0.02)
 
 
-class Spike(BasePart):
+class Spiculum(BasePart):
     def __init__(self):
         super().__init__(energy=1, attack=2, cost=0.02)
 
 
-class Leaf(BasePart):
+class Folium(BasePart):
     def __init__(self):
         super().__init__(energy=5, volume=0.2, cost=0.01, photosynthesis_rate=0.07)
 
 
-class CellNucleus(BasePart):
+class NucleusCellulae(BasePart):
     def __init__(self):
         super().__init__(energy=3, can_reproduce=True, volume=0.5, defense=1,  cost=0.01)
 
 
-class Cytoplasm(BasePart):
+class Cytoplasma(BasePart):
     def __init__(self):
         super().__init__(energy=1, volume=0.5, defense=2, speed=2, cost=0.01)
 
 
-class MobileCytoplasm(BasePart):
+class CytoplasmaMobilis(BasePart):
     def __init__(self):
         super().__init__(energy=1, volume=0.5, speed=5, cost=0.02)
 
-class MastCytoplasm(BasePart):
+class CytoplasmaMagnum(BasePart):
         def __init__(self):
             super().__init__(energy=2, volume=3, defense=2, speed=1, cost=0.02)
