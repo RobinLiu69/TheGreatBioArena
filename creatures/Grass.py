@@ -11,12 +11,13 @@ class Grass(BaseCreature):
 
     def move_logic(self, energy_ratio, note) -> tuple[int, int]:
         if len(note) == 0:
-            note.append(random.randint(0, 360))
-            note.append(1)
-        note[1] -= 0.02
-        return note[0], note[1]
+            note["方向"] = random.randint(0, 360)
+            note["速度"] = 1
+        note["速度"] -= 0.02
+        return note["方向"], note["速度"]
 
     def reproduce_logic(self, energy_ratio, note) -> list[int]:
         if energy_ratio > 1:
             return [1, 1, 1, 1]
         return []
+
