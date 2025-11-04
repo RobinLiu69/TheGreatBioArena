@@ -56,7 +56,7 @@ class BioEntity:
         self.comsume_energy(self.speed * dt * speed_ratio / 100)
         self.gain_energy(self.photosynthesis_rate * dt * self.energy_ratio * 8 / (2**max(0, int(math.log2(world_total_energy))-7)))
 
-        if self.energy <= 0:
+        if self.energy < 1:
             self.alive = False
             return []
         
@@ -165,5 +165,6 @@ class BioEntity:
             children.append(child)
 
         return children
+
 
 
