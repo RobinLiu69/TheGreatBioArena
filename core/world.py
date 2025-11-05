@@ -46,8 +46,8 @@ class World:
         for name in creature_names:
             name_energy[name] = round(sum([entity.energy for entity in self.entities if entity.name == name]))
             if name_energy[name]/world_total_energy > 0.95:
-                self.win = True
-                print("\n", name)
+                pass
+
         if not self.win:
             print("\r", name_energy, end="                                    ")
 
