@@ -7,10 +7,10 @@ def random_position(width=1200, height=800):
 
 
 class BioEntity:
-    def __init__(self, name, module: base_creature.BaseCreature, width, height, energy_ratio=1.0):
+    def __init__(self, name, module: base_creature.BaseCreature, width, height, energy):
         self.name = name
         self.module = module
-        self.note = {"_time": 0.0}
+        self.note = {"time": 0.0}
         self.parts = module.init_parts()
         self.len_of_parts = len(self.parts)
         self.year_old = 0
@@ -23,8 +23,8 @@ class BioEntity:
         self.base_spd = sum(getattr(part, "speed", 0) for part in self.parts)
         self.cost = sum(getattr(part, "cost", 0) for part in self.parts)
 
-        self.energy_ratio = energy_ratio
-        self.energy = self.base_energy * self.energy_ratio
+        self.energy = energy
+        self.energy_ratio = self.energy / self.base_energy
         self.volume = self.base_vol
         self.defense = self.base_def * self.energy_ratio
         self.max_defense = self.base_def * self.energy_ratio
@@ -43,7 +43,7 @@ class BioEntity:
         if not self.alive:
             return []
 
-        self.note["_time"] += dt
+        self.note["time"] += dt
         
         direction, speed_ratio = self.module.move_logic(self.energy_ratio, self.note)
         if direction is not None:
@@ -158,13 +158,10 @@ class BioEntity:
         children: list[BioEntity] = []
         # if total == 0: return children
         for ratio in ratios:
-            child_energy_ratio = self.energy_ratio * (ratio / total)
-            child = BioEntity(self.name, self.module, self.width, self.height, energy_ratio=child_energy_ratio)
+            child_energy = self.energy * (ratio / total)
+            child = BioEntity(self.name, self.module, self.width, self.height, energy=child_energy)
             child.x = self.x + random.randint(-int(self.size*1), int(self.size*1))
             child.y = self.y + random.randint(-int(self.size*1), int(self.size*1))
             children.append(child)
 
         return children
-
-
-
