@@ -12,8 +12,8 @@ class Killer(BaseCreature):
     def move_logic(self, energy_ratio, note) -> tuple[int, int]:
         if len(note) == 1:
             note["方向"] = random.randint(0, 360)
-        elif note["time"] > 1:
-            note["time"] = 0
+        elif note["_time"] > 1:
+            note["_time"] = 0
             note["方向"] = random.randint(0, 360)
         return note["方向"], 0.2
 
