@@ -20,15 +20,15 @@ class World:
                 for attr in dir(module):
                     obj = getattr(module, attr)
                     if isinstance(obj, type) and issubclass(obj, BaseCreature) and obj is not BaseCreature:
-                        creature_energy = sum(part.energy for part in obj().init_parts())
-                        if creature_energy > 100: break
+                        creature_base_energy = sum(part.energy for part in obj().init_parts())
+                        if creature_base_energy > 100: break
                         number_of_creatures = (100//sum(part.energy for part in obj().init_parts()))
-                        print(attr, creature_energy, number_of_creatures)
-                        creature_energy_ratio = round(int(100/number_of_creatures)/creature_energy, 3)
-                        print(creature_energy_ratio)
+                        print(attr, creature_base_energy, number_of_creatures)
+                        creature_energy = round(int(100/number_of_creatures), 3)
+                        print(creature_energy)
                         for i in range(number_of_creatures):
                             creature = obj()
-                            entity = BioEntity(attr, creature, self.width, self.height, creature_energy_ratio)
+                            entity = BioEntity(attr, creature, self.width, self.height, creature_energy)
                             self.entities.append(entity)
     
     def update(self, dt: float):
@@ -55,5 +55,3 @@ class World:
         self.screen.fill((50, 100, 255))
         for entity in self.entities:
             pygame.draw.circle(self.screen, entity.color, (int(entity.x), int(entity.y)), int(entity.size))
-
-
