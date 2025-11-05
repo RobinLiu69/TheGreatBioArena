@@ -145,10 +145,10 @@ class BioEntity:
                     
                 angle = math.atan2(dy, dx)
                 push = (self.size + other.size - dist) / 2
-                self.x += math.cos(angle) * push * dt
-                self.y += math.sin(angle) * push * dt
-                other.x -= math.cos(angle) * push * dt
-                other.y -= math.sin(angle) * push *dt
+                self.x += math.cos(angle) * push
+                self.y += math.sin(angle) * push
+                other.x -= math.cos(angle) * push
+                other.y -= math.sin(angle) * push
 
 
     def reproduce(self, ratios) -> list["BioEntity"]:
