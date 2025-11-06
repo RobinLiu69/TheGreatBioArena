@@ -10,7 +10,7 @@ class BioEntity:
     def __init__(self, name, module: base_creature.BaseCreature, width, height, energy):
         self.name = name
         self.module = module
-        self.note = {"time": 0.0}
+        self.note = {"_time": 0.0}
         self.parts = module.init_parts()
         self.len_of_parts = len(self.parts)
         self.year_old = 0
@@ -43,7 +43,7 @@ class BioEntity:
         if not self.alive:
             return []
 
-        self.note["time"] += dt
+        self.note["_time"] += dt
         
         direction, speed_ratio = self.module.move_logic(self.energy_ratio, self.note)
         if direction is not None:
@@ -152,11 +152,9 @@ class BioEntity:
 
 
     def reproduce(self, ratios) -> list["BioEntity"]:
-        # if [ratio for ratio in ratios if ratio is not int]: return []
         ratios = tuple(map(abs, ratios))
         total = sum(ratios)
         children: list[BioEntity] = []
-        # if total == 0: return children
         for ratio in ratios:
             child_energy = self.energy * (ratio / total)
             child = BioEntity(self.name, self.module, self.width, self.height, energy=child_energy)
@@ -165,3 +163,4 @@ class BioEntity:
             children.append(child)
 
         return children
+
