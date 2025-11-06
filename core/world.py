@@ -49,7 +49,7 @@ class World:
                 pass
 
         if not self.win:
-            print("\r", name_energy, end="                                    ")
+            print(f"\r{name_energy}".ljust(80), end="", flush=True)
 
     def draw(self):
         self.screen.fill((50, 100, 255))

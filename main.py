@@ -10,7 +10,7 @@ def main():
     world = World(screen)
     run = True
     while run:
-        dt = clock.tick(20) / 1000.0
+        dt = clock.tick(20) / 100.0
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
