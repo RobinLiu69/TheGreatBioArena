@@ -4,7 +4,7 @@ from core.base_parts import *
 
 class Spora(BaseCreature):
     '''
-    Made by
+    Made by Robin
     '''
     def init_parts(self) -> list[BasePart]:
         return [NucleusCellulae()] + [Folium() for _ in range(19)] + [CytoplasmaMobilis() for _ in range(2)]
