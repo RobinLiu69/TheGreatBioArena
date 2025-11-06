@@ -2,7 +2,10 @@ import random
 from core.base_creature import BaseCreature
 from core.base_parts import *
 
-class Spora(BaseCreature):    
+class Spora(BaseCreature):
+    '''
+    Made by
+    '''
     def init_parts(self) -> list[BasePart]:
         return [NucleusCellulae()] + [Folium() for _ in range(19)] + [CytoplasmaMobilis() for _ in range(2)]
 

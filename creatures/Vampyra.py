@@ -3,6 +3,9 @@ from core.base_creature import BaseCreature
 from core.base_parts import *
 
 class Vampyra(BaseCreature):
+    '''
+    Made by Robin
+    '''
     def init_parts(self) -> list[BasePart]:
         return [
             NucleusCellulae(),
