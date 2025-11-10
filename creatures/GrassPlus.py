@@ -4,7 +4,7 @@ from core.base_parts import *
 
 class GrassPlus(BaseCreature):    
     def init_parts(self) -> list[BasePart]:
-        return [NucleusCellulae()] + [Folium() for _ in range(8)] + [CytoplasmaMobilis()]
+        return [NucleusCellulae(), Spiculum()] + [Folium() for _ in range(8)] + [CytoplasmaMobilis()]
 
     def get_color(self) -> tuple[int, int, int]:
         return (120, 255, 120)
