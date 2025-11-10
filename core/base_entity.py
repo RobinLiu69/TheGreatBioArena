@@ -156,7 +156,7 @@ class BioEntity:
         total = sum(ratios)
         children: list[BioEntity] = []
         for ratio in ratios:
-            child_energy = self.energy * (ratio / total)
+            child_energy = self.energy * (ratio / total) * 0.9
             child = BioEntity(self.name, self.module, self.width, self.height, energy=child_energy)
             child.x = self.x + random.randint(-int(self.size*1), int(self.size*1))
             child.y = self.y + random.randint(-int(self.size*1), int(self.size*1))
